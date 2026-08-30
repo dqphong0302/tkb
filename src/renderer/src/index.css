@@ -1,0 +1,233 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    @apply text-slate-800 antialiased;
+    background: #f4f7fb;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn text-white;
+    background: linear-gradient(135deg, #2563eb, #4f46e5);
+    box-shadow: 0 8px 20px rgb(37 99 235 / 18%);
+  }
+  .btn-ghost {
+    @apply btn border border-slate-300 bg-white text-slate-700 hover:bg-slate-100;
+  }
+  .btn-danger {
+    @apply btn border border-red-200 bg-white text-red-600 hover:bg-red-50;
+  }
+  .input {
+    @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100;
+  }
+  .label {
+    @apply mb-1 block text-xs font-medium text-slate-600;
+  }
+  .card {
+    @apply rounded-xl border border-slate-200 bg-white;
+    box-shadow: 0 1px 2px rgb(15 23 42 / 3%);
+  }
+  .th {
+    @apply border-b border-slate-200 bg-slate-50 px-3 py-2 text-left text-xs font-semibold uppercase tracking-wide text-slate-500;
+  }
+  .td {
+    @apply border-b border-slate-100 px-3 py-1.5 text-sm;
+  }
+}
+
+@layer components {
+  .app-shell { @apply flex h-full overflow-hidden; }
+  .app-sidebar { @apply flex w-64 shrink-0 flex-col border-r border-slate-200 bg-white p-4; }
+  .brand-block { @apply flex items-center gap-3 border-b border-slate-100 px-2 pb-5 pt-1; }
+  .brand-mark { @apply flex h-11 w-11 items-center justify-center rounded-xl text-sm font-black tracking-tight text-white; background: linear-gradient(145deg, #16a34a, #2563eb 52%, #7c3aed); box-shadow: 0 8px 20px rgb(37 99 235 / 22%); }
+  .brand-name { @apply text-sm font-bold text-slate-900; }
+  .brand-tagline { @apply text-xs text-slate-500; }
+  .app-nav { @apply mt-5 flex flex-1 flex-col gap-1; }
+  .nav-section-label { @apply mb-2 px-3 text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400; }
+  .nav-item { @apply flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-slate-600 transition hover:bg-slate-50 hover:text-slate-900; }
+  .nav-item-active { @apply bg-blue-50 text-blue-700; box-shadow: inset 3px 0 0 #2563eb; }
+  .nav-icon { @apply flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-base font-semibold; }
+  .nav-item-active .nav-icon { @apply bg-blue-600 text-white; }
+  .nav-label { @apply block truncate text-sm font-semibold; }
+  .nav-hint { @apply mt-0.5 block truncate text-[11px] text-slate-400; }
+  .sidebar-tip { @apply flex gap-2.5 rounded-xl border border-blue-100 bg-blue-50/70 p-3 text-xs text-slate-600; }
+  .sidebar-tip strong { @apply text-slate-800; }
+  .sidebar-tip p { @apply mt-1 leading-relaxed; }
+  .sidebar-tip-icon { @apply flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-600 font-bold text-white; }
+  .app-workspace { @apply flex min-w-0 flex-1 flex-col; }
+  .app-header { @apply flex h-[76px] shrink-0 items-center justify-between border-b border-slate-200 bg-white/90 px-7 backdrop-blur; }
+  .page-eyebrow { @apply text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-400; }
+  .page-title { @apply mt-0.5 text-lg font-bold text-slate-900; }
+  .semester-picker { @apply flex items-center gap-3 text-xs font-medium text-slate-500; }
+  .app-main { @apply flex-1 overflow-y-auto p-7; scrollbar-gutter: stable; }
+  .overview-hero { @apply flex items-center justify-between overflow-hidden rounded-2xl p-7 text-white; min-height: 210px; background: radial-gradient(circle at 82% 15%, rgb(255 255 255 / 18%), transparent 25%), linear-gradient(120deg, #1d4ed8, #4f46e5 60%, #7c3aed); box-shadow: 0 18px 45px rgb(37 99 235 / 18%); }
+  .overview-hero h2 { @apply mt-2 text-2xl font-bold; }
+  .overview-hero p { @apply mt-2 max-w-xl text-sm leading-relaxed text-blue-100; }
+  .hero-kicker { @apply text-xs font-bold uppercase tracking-[0.16em] text-blue-200; }
+  .overview-hero .btn-primary { @apply bg-white text-blue-700 hover:bg-blue-50; background-image: none; box-shadow: none; }
+  .progress-orbit { @apply relative mr-5 flex h-32 w-32 shrink-0 items-center justify-center rounded-full; background: conic-gradient(#fff var(--progress), rgb(255 255 255 / 20%) 0); }
+  .progress-orbit::before { content: ''; @apply absolute h-[104px] w-[104px] rounded-full; background: #4b42d5; }
+  .progress-orbit > div { @apply relative z-10 flex flex-col items-center; }
+  .progress-orbit strong { @apply text-2xl font-bold; }
+  .progress-orbit span { @apply text-xs text-blue-100; }
+  .step-card { @apply p-5; }
+  .section-heading { @apply flex items-start justify-between gap-5; }
+  .section-heading h2 { @apply mt-1 text-lg font-bold text-slate-900; }
+  .section-heading p { @apply mt-1 text-sm text-slate-500; }
+  .section-kicker { @apply text-[11px] font-bold uppercase tracking-[0.14em] text-blue-600; }
+  .completion-pill { @apply shrink-0 rounded-full bg-blue-50 px-3 py-1.5 text-xs font-semibold text-blue-700; }
+  .step-grid { @apply mt-5 grid grid-cols-3 gap-2.5; }
+  .overview-step { @apply flex items-center gap-3 rounded-xl border border-slate-200 p-3 transition hover:border-blue-200 hover:bg-blue-50/40; }
+  .overview-step-clickable { @apply cursor-pointer hover:border-blue-300 hover:bg-blue-50/70 hover:shadow-sm active:scale-[0.99] text-left w-full; }
+  .overview-step-done { @apply border-emerald-100 bg-emerald-50/50; }
+  .step-number { @apply flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-slate-100 text-sm font-bold text-slate-500; }
+  .overview-step-done .step-number { @apply bg-emerald-500 text-white; }
+  .step-title { @apply truncate text-sm font-semibold text-slate-800; }
+  .step-meta { @apply mt-0.5 truncate text-[11px] text-slate-400; }
+  .kbd { @apply inline-block rounded border border-slate-300 bg-slate-100 px-1.5 py-0.5 text-[10px] font-mono font-semibold text-slate-600 shadow-sm; }
+  .wizard-steps { @apply grid grid-cols-9 overflow-hidden rounded-xl border border-slate-200 bg-white; }
+  .wizard-steps li { @apply min-w-0; }
+  .wizard-step { @apply flex h-full w-full flex-col items-center gap-1 border-r border-slate-100 px-2 py-3 text-slate-400 transition hover:bg-slate-50; }
+  .wizard-steps li:last-child .wizard-step { @apply border-r-0; }
+  .wizard-step span { @apply flex h-7 w-7 items-center justify-center rounded-full bg-slate-100 text-xs font-bold; }
+  .wizard-step small { @apply max-w-full truncate text-[10px] font-semibold; }
+  .wizard-step-active { @apply bg-blue-50 text-blue-700; }
+  .wizard-step-active span { @apply bg-blue-600 text-white; }
+  .wizard-step-done { @apply text-emerald-700; }
+  .wizard-step-done span { @apply bg-emerald-500 text-white; }
+  .wizard-content { @apply min-h-[380px]; }
+  .assignment-tabs { @apply overflow-hidden p-0; }
+  .assignment-heading { @apply items-center; }
+  .assignment-actions { @apply flex shrink-0 items-center gap-2; }
+  .assignment-tier { @apply flex min-h-[78px] items-stretch border-b border-slate-100; }
+  .assignment-tier-second { @apply min-h-[86px] border-b-0 bg-slate-50/60; }
+  .assignment-tier-label { @apply flex w-40 shrink-0 items-center gap-3 border-r border-slate-100 px-5 text-xs text-slate-500; }
+  .assignment-tier-label > span { @apply flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-100 font-bold text-blue-700; }
+  .assignment-tier-label strong { @apply block text-sm text-slate-800; }
+  .assignment-tier-label small { @apply mt-0.5 block text-[10px] font-normal text-slate-400; }
+  .assignment-tab-list { @apply flex min-w-0 flex-1 items-center gap-2 overflow-x-auto px-3 py-3; }
+  .assignment-tab-list button { @apply flex shrink-0 flex-col items-start rounded-lg border border-slate-200 bg-white px-4 py-2 text-left text-sm font-semibold text-slate-600 transition hover:border-blue-200 hover:bg-blue-50/60 hover:text-blue-700; }
+  .assignment-tab-list button > span { @apply mt-0.5 text-[10px] font-medium text-slate-400; }
+  .assignment-tab-list button.active { @apply border-blue-600 bg-blue-600 text-white shadow-sm; }
+  .assignment-tab-list button.active > span { @apply text-blue-100; }
+  .assignment-tier-second .assignment-tab-list button { @apply min-w-[82px] border-slate-200 bg-white px-3 py-2; }
+  .assignment-tier-second .assignment-tab-list button.active { @apply border-blue-200 bg-blue-50 text-blue-700; }
+  .assignment-tab-list small { @apply mt-0.5 block text-[10px] font-normal text-slate-400; }
+  .assignment-tier-second .assignment-tab-list button.active small { @apply text-blue-500; }
+  .assignment-table-title { @apply flex items-center justify-between border-b border-slate-100 bg-white px-4 py-3; }
+  .assignment-table-title span { @apply text-[10px] font-bold uppercase tracking-[0.12em] text-blue-600; }
+  .assignment-table-title h3 { @apply mt-0.5 text-base font-bold text-slate-900; }
+  .assignment-table-title p { @apply rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-500; }
+  .schedule-layout { @apply flex h-full min-h-0 gap-4; }
+  .schedule-workbench-head { @apply flex items-center justify-between gap-5 rounded-xl border border-slate-200 bg-white px-5 py-4; }
+  .schedule-workbench-head h2 { @apply mt-1 text-lg font-bold text-slate-900; }
+  .schedule-workbench-head p { @apply mt-1 text-sm text-slate-500; }
+  .schedule-lock-guide { @apply shrink-0 rounded-full bg-amber-50 px-3 py-2 text-xs font-semibold text-amber-700; }
+  .schedule-auto-panel { @apply space-y-4 rounded-xl border border-blue-200 bg-blue-50/30 p-4; }
+  .schedule-auto-panel-head { @apply flex items-center justify-between gap-4 border-b border-blue-100 pb-3; }
+  .schedule-auto-panel-head h3 { @apply mt-1 text-base font-bold text-slate-900; }
+  .schedule-workbench-tabs { @apply flex shrink-0 gap-1 rounded-xl bg-slate-100 p-1; }
+  .schedule-workbench-tabs button { @apply flex items-center gap-2 rounded-lg px-3 py-2 text-left text-slate-500 transition hover:bg-white hover:text-slate-800; }
+  .schedule-workbench-tabs button > span { @apply flex h-7 w-7 items-center justify-center rounded-md bg-white text-sm shadow-sm; }
+  .schedule-workbench-tabs button strong { @apply block text-xs; }
+  .schedule-workbench-tabs button small { @apply mt-0.5 block text-[10px] text-slate-400; }
+  .schedule-workbench-tabs button.active { @apply bg-white text-blue-700 shadow-sm; }
+  .schedule-workbench-tabs button.active > span { @apply bg-blue-600 text-white; }
+  .schedule-browser { @apply flex w-60 shrink-0 flex-col overflow-hidden rounded-xl border border-slate-200 bg-white; }
+  .schedule-browser-head { @apply border-b border-slate-100 px-4 py-3; }
+  .schedule-browser-head h2 { @apply mt-1 text-sm font-bold text-slate-900; }
+  .view-switcher { @apply m-3 grid grid-cols-2 rounded-lg bg-slate-100 p-1; }
+  .view-switcher button { @apply rounded-md px-2 py-1.5 text-xs font-semibold text-slate-500 transition; }
+  .view-switcher button.active { @apply bg-white text-blue-700 shadow-sm; }
+  .schedule-browser > .input { @apply mx-3 mb-3 w-auto; }
+  .schedule-list { @apply min-h-0 flex-1 overflow-y-auto border-t border-slate-100; }
+  .schedule-list-item { @apply flex w-full items-center justify-between gap-2 border-b border-slate-100 px-3 py-2.5 text-left transition hover:bg-slate-50; }
+  .schedule-list-item.active { @apply bg-blue-50; box-shadow: inset 3px 0 0 #2563eb; }
+  .schedule-count { @apply shrink-0 rounded-full bg-slate-100 px-2 py-1 text-[10px] font-bold text-slate-500; }
+  .schedule-count.complete { @apply bg-emerald-100 text-emerald-700; }
+  .schedule-workspace { @apply min-w-0 flex-1 space-y-3; }
+  .schedule-toolbar { @apply flex flex-wrap items-center justify-between gap-2 rounded-xl border border-slate-200 bg-white p-3; }
+  .schedule-auto-actions { @apply flex flex-wrap items-center gap-2; }
+  .schedule-auto-actions > span { @apply whitespace-nowrap rounded-full bg-amber-50 px-2.5 py-1.5 text-xs font-semibold text-amber-700; }
+  .schedule-auto-actions > b { @apply text-xs text-slate-500; }
+  .schedule-progress { @apply rounded-xl border border-blue-100 bg-blue-50/70 px-4 py-3 text-slate-500; }
+  .progress-track { @apply mt-2 h-1.5 overflow-hidden rounded-full bg-blue-100; }
+  .progress-track span { @apply block h-full rounded-full bg-blue-600 transition-all; }
+  .remaining-strip { @apply flex items-center gap-4 rounded-xl border border-slate-200 bg-white px-4 py-3; }
+  .remaining-strip-title { @apply flex shrink-0 flex-col; }
+  .remaining-strip-title strong { @apply mt-0.5 text-sm text-slate-800; }
+  .remaining-subjects { @apply flex min-w-0 flex-1 gap-2 overflow-x-auto; }
+  .subject-chip { @apply inline-flex shrink-0 items-center gap-1.5 rounded-lg border bg-white px-2.5 py-1.5 text-xs font-semibold text-slate-700; }
+  .subject-chip i { @apply h-2 w-2 rounded-full; }
+  .subject-chip b { @apply ml-1 rounded bg-slate-100 px-1.5 text-[10px]; }
+  .all-done { @apply rounded-lg bg-emerald-50 px-3 py-1.5 text-xs font-semibold text-emerald-700; }
+  .drag-hint { @apply shrink-0 text-[10px] text-slate-400; }
+  .schedule-grid-wrap { @apply min-h-[280px] overflow-auto rounded-xl border border-slate-200 bg-white; max-height: calc(100vh - 420px); }
+  .schedule-grid-wrap thead { @apply sticky top-0 z-20; }
+  .schedule-grid-wrap .th:first-child { @apply sticky left-0 z-30; }
+  .schedule-day-head { @apply min-w-[120px] border-b border-l border-slate-200 bg-slate-50 px-3 py-2.5 text-center text-xs font-bold text-slate-700; }
+  .schedule-period-head { @apply sticky left-0 z-10 w-24 whitespace-nowrap border-b border-r border-slate-200 bg-slate-50 px-3 py-2 text-xs text-slate-500; }
+  .schedule-period-head strong { @apply block text-slate-700; }
+  .schedule-cell { @apply relative h-[80px] min-w-[125px] border-b border-r border-slate-100 p-1.5 align-top transition-colors; background-image: radial-gradient(circle, #e2e8f0 0.7px, transparent 0.7px); background-size: 8px 8px; }
+  .schedule-cell-dragover { @apply !border-2 !border-dashed !border-blue-500 !bg-blue-50/90 shadow-inner; }
+  .schedule-cell-conflict { @apply !border-2 !border-rose-400 !bg-rose-50/60; }
+  .schedule-entry { @apply relative flex h-full select-none flex-col justify-between rounded-lg border-l-4 p-1.5 text-xs shadow-sm transition hover:-translate-y-0.5 hover:shadow-md; }
+  .schedule-entry:hover .cell-hover-actions { display: flex; }
+  .schedule-entry[draggable="true"] { @apply cursor-grab active:cursor-grabbing; }
+  .schedule-entry-locked { @apply !cursor-default ring-2 ring-amber-300 ring-offset-1 hover:translate-y-0; }
+  .cell-hover-actions { @apply absolute right-1 top-1 hidden items-center gap-0.5 rounded bg-white/90 p-0.5 shadow-sm backdrop-blur-sm; }
+  .cell-hover-btn { @apply flex h-5 w-5 items-center justify-center rounded text-[11px] text-slate-500 transition hover:bg-slate-100 hover:text-slate-900; }
+  .empty-slot { @apply flex h-full w-full items-center justify-center rounded-lg border border-dashed border-slate-200 text-lg font-light text-slate-300 transition hover:border-blue-400 hover:bg-blue-50/80 hover:text-blue-600 hover:font-bold; }
+
+  /* Unplaced Palette */
+  .unplaced-palette { @apply flex flex-col rounded-xl border border-slate-200 bg-white p-3.5 shadow-sm; }
+  .palette-card { @apply flex min-w-[180px] cursor-grab select-none items-center justify-between gap-2 rounded-xl border border-amber-200 bg-amber-50/70 p-2.5 text-left text-xs shadow-sm transition hover:-translate-y-0.5 hover:border-amber-300 hover:shadow-md active:cursor-grabbing; }
+  .palette-card-complete { @apply cursor-default border-emerald-100 bg-emerald-50/40 opacity-75 hover:translate-y-0 hover:border-emerald-200 hover:shadow-sm; }
+  .palette-card-active { @apply ring-2 ring-blue-500 bg-blue-50/80 border-blue-400; }
+  .palette-count-badge { @apply shrink-0 rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-bold text-slate-700; }
+  .palette-count-complete { @apply bg-emerald-100 text-emerald-700; }
+
+  /* Master Matrix Grid */
+  .matrix-wrap { @apply overflow-auto rounded-xl border border-slate-200 bg-white; max-height: calc(100vh - 270px); }
+  .matrix-wrap thead { @apply sticky top-0 z-20; }
+  .matrix-wrap .th-sticky { @apply sticky left-0 z-30 bg-slate-50; }
+  .matrix-cell { @apply h-14 min-w-[90px] border-b border-r border-slate-100 p-1 text-[11px] align-middle; }
+  .matrix-cell-dragover { @apply !bg-blue-50 ring-2 ring-inset ring-blue-400; }
+  .matrix-entry-pill { @apply flex flex-col rounded px-1.5 py-0.5 text-[10px] font-semibold border-l-2 shadow-sm; }
+  .school-stack { scrollbar-gutter: stable; }
+  .school-class-card { @apply overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm; }
+  .school-class-head { @apply flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 bg-slate-50/70 px-3.5 py-2.5; }
+  .school-class-grid { @apply rounded-none border-0; max-height: none; min-height: 0; }
+  .school-class-grid .schedule-cell { @apply h-[68px]; }
+  .school-class-palette { @apply rounded-none border-x-0 border-b-0 shadow-none; }
+
+}
+
+@media (max-width: 1100px) {
+  .app-sidebar { @apply w-20 px-2; }
+  .brand-block { @apply justify-center px-0; }
+  .brand-block > div:last-child, .nav-item > span:last-child, .nav-section-label, .sidebar-tip { @apply hidden; }
+  .nav-item { @apply justify-center px-2; }
+  .step-grid { @apply grid-cols-2; }
+  .wizard-steps { @apply grid-cols-5; }
+}
+
+@media (max-width: 760px) {
+  .assignment-heading { @apply items-start; }
+  .assignment-actions { @apply w-full flex-wrap; }
+  .assignment-tier-label { @apply w-28 px-3; }
+  .assignment-tier-label small { @apply hidden; }
+}

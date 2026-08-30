@@ -1,0 +1,12 @@
+node_modules/
+out/
+dist/
+.DS_Store
+*.log
+*.db
+*.sqlite
+*.sqlite3
+*.tsbuildinfo
+outputs/
+solver/.venv/
+solver/__pycache__/

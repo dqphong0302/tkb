@@ -1,0 +1,1 @@
+ALTER TABLE school ADD COLUMN max_periods_per_week INTEGER NOT NULL DEFAULT 0;

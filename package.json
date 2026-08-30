@@ -1,0 +1,42 @@
+{
+  "name": "tkb",
+  "version": "0.1.0",
+  "description": "Phần mềm xếp thời khóa biểu offline",
+  "main": "./out/main/index.js",
+  "author": "tkb",
+  "private": true,
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "pnpm run typecheck && electron-vite build",
+    "typecheck": "tsc --noEmit -p tsconfig.node.json && tsc --noEmit -p tsconfig.web.json",
+    "test:solver": "node -e \"const { spawnSync } = require('child_process'); const { existsSync } = require('fs'); const p = process.platform === 'win32' && existsSync('solver/.venv/Scripts/python.exe') ? 'solver/.venv/Scripts/python.exe' : 'solver/.venv/bin/python3'; const r = spawnSync(p, ['solver/test_solver_comprehensive.py'], { stdio: 'inherit' }); process.exit(r.status ?? 0);\"",
+    "test:backend": "npx esbuild src/main/test_integration_all.ts --bundle --platform=node --external:better-sqlite3 --outfile=out/test_integration.js && ELECTRON_RUN_AS_NODE=1 npx electron out/test_integration.js",
+    "test": "pnpm run typecheck && pnpm run test:solver && pnpm run test:backend",
+    "postinstall": "electron-builder install-app-deps",
+    "build:win": "pnpm run build && electron-builder --win",
+    "build:mac": "pnpm run build && electron-builder --mac"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.5.0",
+    "drizzle-orm": "^0.36.4",
+    "xlsx": "^0.18.5",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.11",
+    "@types/node": "^22.9.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "autoprefixer": "^10.4.20",
+    "electron": "^32.2.5",
+    "electron-builder": "^25.1.8",
+    "electron-vite": "^2.3.0",
+    "postcss": "^8.4.49",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^3.4.15",
+    "typescript": "^5.7.2",
+    "vite": "^5.4.11"
+  }
+}

@@ -1,0 +1,17 @@
+appId: vn.tkb.app
+productName: TKB
+directories:
+  buildResources: resources
+files:
+  - out/**
+  - package.json
+asarUnpack:
+  - resources/**
+win:
+  target: [nsis]
+mac:
+  target: [dmg]
+  category: public.app-category.education
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
